@@ -1,4 +1,4 @@
-﻿namespace Example.Basic
+﻿namespace Example.TextureArray
 {
     using System;
     using System.Collections;
@@ -7,8 +7,7 @@
 
     public class Character : MonoBehaviour
     {
-        [Header("Character script for 3DBasicExample"), Space()]
-        public Shader shader;
+        [Header("Character script for TextureArray"), Space()]
         public CharacterData data;
         public bool isSkinned;
         public RuntimeAnimatorController animatorController;
@@ -131,7 +130,7 @@
             BuildComponents();
 
             if (material == null)
-                material = new Material(shader);
+                material = new Material(Shader.Find("Standard"));
 
             if (boneArray == null)
                 boneArray = BuildBone();
@@ -151,11 +150,6 @@
                 meshFilter.sharedMesh = mesh;
                 meshRenderer.sharedMaterial = material;
             }
-        }
-
-        private void Awake()
-        {
-            BuildCharacter(null, null, null);
         }
     }
 }
